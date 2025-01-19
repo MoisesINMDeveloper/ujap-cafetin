@@ -24,7 +24,7 @@ const Navbar=() => {
   return (
     <>
       <div className='z-50 top-0 fixed lg:px-20 h-10 w-full flex flex-row-reverse justify-between items-center px-4 pt-2 bg-primary box-shadow text-black text-lg'>
-        <div className='flex flex-row gap-2'>
+        <div className='flex flex-row gap-2 mt-[-6px]'>
           <Title color='text-tertiary' title={'Cafetín'} />
           <IconBurger
             onClick={handleIconBurgerClick}

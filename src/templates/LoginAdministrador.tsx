@@ -1,9 +1,37 @@
+import { InputLogin } from "../components/input";
+import { useState } from "react";
+import { loginAdmin } from "../constant/Api";
+
 const LoginAdministrador=() => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const data = await loginAdmin(username, password);
+            console.log(data);
+            sessionStorage.setItem("token", data.token);
+            window.location.href = "/cafetin-ujap/administration-panel";
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const input = [
+        { type: "text", text: "Usuario administrador", value: username, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value) },
+        { type: "password", text: "Contraseña Administrador", value: password, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) },
+    ];
+
     return (
-        <div>
-            <div className=" h-[calc(100vh-186px)] w-full relative flex items-center justify-center bg-blue-500">
-                <h1 className="text-white ">Login Adninistrador</h1>
-            </div>
+        <div className=" h-[calc(100vh-186px)] w-full relative flex flex-col items-center justify-evenly bg-black">
+            <h1 className="text-white text-2xl font-bold">Ingresar al administrador</h1>
+            <form className="flex flex-col gap-4 items-center justify-center" onSubmit={handleSubmit}>
+                {input.map((input, index) => (
+                    <InputLogin key={index} type={input.type} text={input.text} value={input.value} onChange={input.onChange} />
+                ))}
+                <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Enviar</button>
+            </form>
         </div>
     )
 }

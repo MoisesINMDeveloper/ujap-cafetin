@@ -20,3 +20,12 @@ export const createProducts = async({title, price, description, images , categor
         throw error;
     }
 }
+
+export const getProducts = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/products`);
+        return response.data; 
+    } catch (error) {
+        throw error;
+    }
+}

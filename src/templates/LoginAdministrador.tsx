@@ -1,4 +1,4 @@
-import { InputLogin } from "../components/input";
+import { InputLogin } from "../components/atoms/input";
 import { useState } from "react";
 import { loginAdmin } from "../constant/Api";
 

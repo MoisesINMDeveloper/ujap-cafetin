@@ -110,7 +110,7 @@ const PanelAdminProducts = () => {
     };
 
     return (
-        <div className="text-white p-4 flex flex-col gap-4 items-center justify-center mt-32">
+        <div className="text-white p-4 flex flex-col gap-6 items-center justify-center">
             <h1 className="text-2xl mb-4">Administrador de Productos</h1>
             <CategoryFilter
                 categories={categories}
@@ -123,7 +123,7 @@ const PanelAdminProducts = () => {
                 handleUpdate={handleUpdate}
             />
             <button
-                className="bg-primary text-white font-bold px-4 py-2 rounded mb-4"
+                className="bg-primary text-white font-bold px-4 py-2 rounded my-4"
                 onClick={handleCreateModalOpen}
             >
                 Agregar Producto

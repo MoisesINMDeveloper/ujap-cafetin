@@ -16,7 +16,7 @@ interface ProductListProps {
 }
 
 const ProductList = ({ products, handleDelete, handleUpdate }: ProductListProps) => (
-    <div className="flex flex-row gap-6">
+    <div className="w-auto px-[7rem] grid grid-cols-6 overflow-hidden gap-4">
         {products.map(product => (
             <ProductCard
                 key={product.id}

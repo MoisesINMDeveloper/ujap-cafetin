@@ -11,8 +11,8 @@ const SideBar = ({ setActiveView }: SideBarProps) => {
         { id: 5, name: "CATEGORIAS" }
     ]
     return (
-        <div className="left-0 top-10 bg-black absolute">
-            <ul className="text-lg border-r-2 border-primary h-[calc(100vh-226px)] w-[150px] px-[25px]  flex flex-col items-center justify-around">
+        <div className="left-0 top-10 border-r-2 border-primary bg-black fixed h-screen  z-10 ">
+            <ul className="text-lg  w-[150px] px-[25px]  mt-12 flex flex-col items-center justify-start gap-10">
                 {itemsBar.map(item =>
                     <li className="text-white hover:text-tertiary hover:underline" key={item.id}><button className="hover:underline"
                     onClick={() => setActiveView(item.name)}>

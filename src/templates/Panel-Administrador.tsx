@@ -26,10 +26,12 @@ const PanelAdmin=() => {
         }
     }
     return (
-        <div className=" h-[calc(100vh-186px)] w-full relative flex items-center justify-center bg-black">
+        <div className="  w-full flex overflow-auto  items-center justify-end mt-[4rem] bg-black">
            <div className="flex gap-4">
            <SideBar setActiveView={setActiveView} />
-           {renderActiveView()}
+           <div>
+                {renderActiveView()}
+           </div>
            </div>
         </div>
     )

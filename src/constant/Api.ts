@@ -171,37 +171,38 @@ export const createDeliveryOption = async ({
     throw error;
   }
 };
-export const updateDeliveryOption  = async (deliveryId:number, name:string, fee:number) => {
-    try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.put(
-        `${API_URL}/delivery/${deliveryId}`,
-        { name, fee },
-        { headers: { Authorization: `Bearer ${token}` } }
-        );
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-    }
-export const deleteDeliveryOption = async (deliveryId:number) => {
-    try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.delete(`${API_URL}/delivery/${deliveryId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        });
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-    }
+export const updateDeliveryOption = async (
+  deliveryId: number,
+  name: string,
+  fee: number
+) => {
+  try {
+    const token = sessionStorage.getItem("token");
+    const response = await axios.put(
+      `${API_URL}/delivery/${deliveryId}`,
+      { name, fee },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const deleteDeliveryOption = async (deliveryId: number) => {
+  try {
+    const token = sessionStorage.getItem("token");
+    const response = await axios.delete(`${API_URL}/delivery/${deliveryId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
 //--Servicios de PagoMoviles--//
 export const getPaymentOptions = async () => {
   try {
-    const token = sessionStorage.getItem("token");
-    const response = await axios.get(`${API_URL}/payment`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await axios.get(`${API_URL}/paydates`);
     return response.data;
   } catch (error) {
     throw error;
@@ -216,7 +217,7 @@ export const createPaymentOption = async ({
   bank: string;
   code: string;
   cedula: string;
-    phone: string;
+  phone: string;
 }) => {
   try {
     const token = sessionStorage.getItem("token");
@@ -230,27 +231,33 @@ export const createPaymentOption = async ({
     throw error;
   }
 };
-export const updatePaymentOption  = async (paymentId:number, bank:string, code:string, cedula:string, phone:string) => {
-    try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.put(
-        `${API_URL}/payment/${paymentId}`,
-        { bank, code, cedula, phone },
-        { headers: { Authorization: `Bearer ${token}` } }
-        );
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-    }
-export const deletePaymentOption = async (paymentId:number) => {
-    try {
-        const token = sessionStorage.getItem("token");
-        const response = await axios.delete(`${API_URL}/payment/${paymentId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-        });
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-    }
+export const updatePaymentOption = async (
+  paymentId: number,
+  bank: string,
+  code: string,
+  cedula: string,
+  phone: string
+) => {
+  try {
+    const token = sessionStorage.getItem("token");
+    const response = await axios.put(
+      `${API_URL}/payment/${paymentId}`,
+      { bank, code, cedula, phone },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const deletePaymentOption = async (paymentId: number) => {
+  try {
+    const token = sessionStorage.getItem("token");
+    const response = await axios.delete(`${API_URL}/payment/${paymentId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

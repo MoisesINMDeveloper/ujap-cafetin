@@ -1,5 +1,11 @@
-import {useState,Dispatch,SetStateAction} from 'react';
-import data,{type DeliveryOptions} from '../../constant/data';
+import { useEffect, useState, Dispatch, SetStateAction } from 'react';
+import { getDeliveryOptions } from '../../constant/Api';
+
+interface DeliveryOption {
+    id: number;
+    name: string;
+    fee: number;
+}
 
 interface DeliveryOptionModalProps {
     setDeliveryFee: Dispatch<SetStateAction<number>>;
@@ -8,15 +14,32 @@ interface DeliveryOptionModalProps {
     onClose: () => void;
 }
 
-const DeliveryOptionModal=({setDeliveryFee,setDeliveryLocation,isOpen,onClose}: DeliveryOptionModalProps) => {
-    const [selectedDelivery,setSelectedDelivery]=useState('');
+const DeliveryOptionModal = ({ setDeliveryFee, setDeliveryLocation, isOpen, onClose }: DeliveryOptionModalProps) => {
+    const [deliveryOptions, setDeliveryOptions] = useState<DeliveryOption[]>([]);
+    const [selectedDelivery, setSelectedDelivery] = useState('');
 
-    const handleDeliveryChange=(event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedOption=event.target.value;
+    // Fetch delivery options from API
+    useEffect(() => {
+        const fetchDeliveryOptions = async () => {
+            try {
+                const response = await getDeliveryOptions()
+                setDeliveryOptions(response);
+            } catch (error) {
+                console.error('Error fetching delivery options:', error);
+            }
+        };
+
+        if (isOpen) {
+            fetchDeliveryOptions();
+        }
+    }, [isOpen]);
+
+    const handleDeliveryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const selectedOption = event.target.value;
         setSelectedDelivery(selectedOption);
 
-        const deliveryOption=data.deliveryOptions.find(option => option.name===selectedOption);
-        if(deliveryOption) {
+        const deliveryOption = deliveryOptions.find(option => option.name === selectedOption);
+        if (deliveryOption) {
             setDeliveryFee(deliveryOption.fee);
             setDeliveryLocation(deliveryOption.name);
         } else {
@@ -25,7 +48,7 @@ const DeliveryOptionModal=({setDeliveryFee,setDeliveryLocation,isOpen,onClose}: 
         }
     };
 
-    if(!isOpen) {
+    if (!isOpen) {
         return null;
     }
 
@@ -40,8 +63,10 @@ const DeliveryOptionModal=({setDeliveryFee,setDeliveryLocation,isOpen,onClose}: 
                             onChange={handleDeliveryChange}
                             className="form-select mt-1 block w-full outline-none bg-black text-fourth border-primary border-2 shadow-sm focus:ring-opacity-50"
                         >
-                            <option className='text-fourth' value=''>Ninguno</option>
-                            {data.deliveryOptions.map((option: DeliveryOptions,index: number) => (
+                            <option className="text-fourth" value="">
+                                Ninguno
+                            </option>
+                            {deliveryOptions.map((option, index) => (
                                 <option key={index} value={option.name}>
                                     {option.name} (Bs. {option.fee.toFixed(2)})
                                 </option>
@@ -49,7 +74,9 @@ const DeliveryOptionModal=({setDeliveryFee,setDeliveryLocation,isOpen,onClose}: 
                         </select>
                     </label>
                     <div className="mt-4 flex justify-end space-x-2">
-                        <button onClick={onClose} className="px-4 py-2 bg-gray-700 text-white rounded-md active:bg-primary">Cerrar</button>
+                        <button onClick={onClose} className="px-4 py-2 bg-gray-700 text-white rounded-md active:bg-primary">
+                            Cerrar
+                        </button>
                     </div>
                 </div>
             </div>

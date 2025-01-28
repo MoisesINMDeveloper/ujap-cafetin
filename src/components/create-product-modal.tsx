@@ -18,6 +18,28 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
     const [images, setImages] = useState<string[]>([]);
     const [categoryId, setCategoryId] = useState<number | null>(null);
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+            const imagePromises = Array.from(files).map((file) => {
+                return new Promise<string>((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result as string);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            });
+
+            Promise.all(imagePromises)
+                .then((base64Images) => {
+                    setImages(base64Images);  // Agregar imágenes en base64 al estado
+                })
+                .catch((error) => {
+                    console.error("Error al cargar las imágenes", error);
+                });
+        }
+    };
+
     const handleSave = () => {
         if (categoryId !== null) {
             const newProduct = { title, description, price, images, categoryId };
@@ -35,7 +57,7 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
                         type="text"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full p-2 border-2 border-primary outline-none  rounded"
+                        className="w-full p-2 border-2 border-primary outline-none rounded"
                     />
                 </div>
                 <div className="mb-4">
@@ -58,11 +80,19 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
                 <div className="mb-4">
                     <label className="block text-white">Imágenes</label>
                     <input
-                        type="text"
-                        value={images.join(", ")}
-                        onChange={(e) => setImages(e.target.value.split(", "))}
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onChange={handleImageChange}
                         className="w-full p-2 border-2 border-primary rounded"
                     />
+                    {images.length > 0 && (
+                        <div className="mt-2 flex">
+                            {images.map((image, index) => (
+                                <img key={index} src={image} alt={`image-${index}`} className="w-16 h-16 object-cover rounded" />
+                            ))}
+                        </div>
+                    )}
                 </div>
                 <div className="mb-4">
                     <label className="block text-white">Categoría</label>
@@ -72,7 +102,7 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
                         className="w-full p-2 border-2 border-primary rounded"
                     >
                         <option value="" disabled>Selecciona una categoría</option>
-                        {categories.map(category => (
+                        {categories.map((category) => (
                             <option key={category.id} value={category.id}>{category.name}</option>
                         ))}
                     </select>

@@ -26,7 +26,7 @@ const PanelAdmin=() => {
         }
     }
     return (
-        <div className="  w-full flex overflow-auto  items-center justify-end mt-[4rem] bg-black">
+        <div className="  w-full flex overflow-auto  items-center justify-center mt-[4rem] bg-black">
            <div className="flex gap-4">
            <SideBar setActiveView={setActiveView} />
            <div>

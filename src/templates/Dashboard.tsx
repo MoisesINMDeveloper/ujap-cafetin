@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import InputFilter from '../components/atoms/InputFilter';
 import FilterCategories from '../components/molecules/FilterCategories';
 import Menu from '../components/organisms/Menu';
-import data, { type Category, type Product } from '../constant/data';
+import { type Category, type Product } from '../constant/data';
 import { useCart } from '../hooks/useCart';
+import { getCategories } from '../constant/Api';
 
 const Dashboard = () => {
-  const { categories } = data;
+  const [categories, setCategories] = useState<Category[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredCategories, setFilteredCategories] =
-    useState<Category[]>(categories);
+  const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
   const { addToCart } = useCart();
+
+  // Cargar categorías desde la API
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const data = await getCategories();
+        setCategories(data);
+        setFilteredCategories(data);
+      } catch (error) {
+        console.error('Error al cargar categorías:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
 
   const handleSearch: (term: string) => void = (term: string): void => {
     setSearchTerm(term);
   };
 
-  // Funcion para reemplazar los acentos
+  // Función para reemplazar los acentos
   function quitarAcentos(cadena: string): string {
     const acentos = 'áéíóúÁÉÍÓÚ';
     const sinAcentos = 'aeiouAEIOU';
@@ -31,6 +46,7 @@ const Dashboard = () => {
     return cadena;
   }
 
+  // Filtrar categorías y productos según el término de búsqueda
   const displayedCategories = filteredCategories.map((category) => ({
     ...category,
     products: category.products.filter((product) =>

@@ -71,7 +71,7 @@ const CartSidebar=({isOpen,onClose}: {isOpen: boolean; onClose: () => void;}) =>
         setTimeout((): void => {
             const cartInfo=JSON.parse(localStorage.getItem('cartInfo')!);
             const phoneNumber=`${data?.paydates?.phone}`;
-            const message=`Hola ${data?.contactData[0]?.name}, aqui dejo mi pedido y referencia, quedo atento.\n\nDetalles del pedido:\n${cartInfo.orderSummary}\nMonto: Bs. ${parseFloat(cartInfo.monto).toFixed(2)}\nComentario: ${cartInfo.comment}\nServicio de delivery: ${cartInfo.delivery}\nReferencia: ${referenceNumber}`;
+            const message=`Hola ${data?.contactData[0]?.name}, aqui dejo mi pedido y referencia, quedo atento.\n\nDetalles del pedido:\n${cartInfo.orderSummary}\nMonto: USD - ${parseFloat(cartInfo.monto).toFixed(2)} $\nComentario: ${cartInfo.comment}\nServicio de delivery: ${cartInfo.delivery}\nReferencia: ${referenceNumber}`;
             const whatsappLink=`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
             window.open(whatsappLink,'_blank');
@@ -103,7 +103,7 @@ const CartSidebar=({isOpen,onClose}: {isOpen: boolean; onClose: () => void;}) =>
                             <li className='flex flex-row justify-between items-center'>
                                 <div>
                                     <p className="font-semibold">Services - {deliveryLocation}</p>
-                                    <span>Bs. {deliveryFee.toFixed(2)}</span>
+                                    <span>USD - {deliveryFee.toFixed(2)} $</span>
                                 </div>
                                 <button onClick={handleRemoveDelivery} className="text-red-500  px-2"><TbBasketCancel className='h-5 w-5' /></button>
                             </li>

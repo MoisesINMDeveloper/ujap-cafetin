@@ -68,7 +68,7 @@ const DeliveryOptionModal = ({ setDeliveryFee, setDeliveryLocation, isOpen, onCl
                             </option>
                             {deliveryOptions.map((option, index) => (
                                 <option key={index} value={option.name}>
-                                    {option.name} (Bs. {option.fee.toFixed(2)})
+                                    {option.name} ( {option.fee.toFixed(2)} USD. )
                                 </option>
                             ))}
                         </select>

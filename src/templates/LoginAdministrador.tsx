@@ -30,7 +30,7 @@ const LoginAdministrador=() => {
                 {input.map((input, index) => (
                     <InputLogin key={index} type={input.type} name={input.name} placeholder={input.placeholder} value={input.value} onChange={input.onChange} />
                 ))}
-                <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Enviar</button>
+                <button type="submit" className="mt-4 px-4 py-2 bg-primary text-white rounded">Enviar</button>
             </form>
         </div>
     )

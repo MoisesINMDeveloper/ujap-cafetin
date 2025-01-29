@@ -48,7 +48,7 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center text-black justify-center">
+        <div className="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center text-black justify-center">
             <div className="bg-black border-primary border-2 w-[350px] p-4 rounded">
                 <h2 className="text-xl font-bold mb-4 text-white">Agregar Producto</h2>
                 <div className="mb-4">

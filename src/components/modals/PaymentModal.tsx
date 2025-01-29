@@ -85,7 +85,7 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ total, onConfirm, onClose }
                 <InfoRow label="Código" value={code} />
                 <InfoRow label="Cédula" value={cedula} />
                 <InfoRow label="Teléfono" value={phone} />
-                <InfoRow label="Monto" value={`Bs. ${total.toFixed(2)}`} />
+                <InfoRow label="Monto" value={`USD ${total.toFixed(2)} $`} />
                 <input
                     type="text"
                     value={referenceNumber}

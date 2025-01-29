@@ -222,7 +222,7 @@ export const createPaymentOption = async ({
   try {
     const token = sessionStorage.getItem("token");
     const response = await axios.post(
-      `${API_URL}/payment`,
+      `${API_URL}/paydates`,
       { bank, code, cedula, phone },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -241,7 +241,7 @@ export const updatePaymentOption = async (
   try {
     const token = sessionStorage.getItem("token");
     const response = await axios.put(
-      `${API_URL}/payment/${paymentId}`,
+      `${API_URL}/paydates/${paymentId}`,
       { bank, code, cedula, phone },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -253,7 +253,7 @@ export const updatePaymentOption = async (
 export const deletePaymentOption = async (paymentId: number) => {
   try {
     const token = sessionStorage.getItem("token");
-    const response = await axios.delete(`${API_URL}/payment/${paymentId}`, {
+    const response = await axios.delete(`${API_URL}/paydates/${paymentId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;

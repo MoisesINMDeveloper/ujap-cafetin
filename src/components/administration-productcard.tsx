@@ -12,9 +12,9 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product, handleDelete, handleUpdate }: ProductCardProps) => (
-    <div className="bg-gray-800 p-4 rounded">
-        <h2 className="text-xl font-bold">{product.title}</h2>
-        <p className="text-gray-400">{product.description}</p>
+    <div className="w-[380px] h-[250px] flex flex-col px-10 py-4 bg-transparent border-primary border-2 rounded-md">
+        <h2 className="text-xl font-bold line-clamp-1">{product.title}</h2>
+        <p className="text-gray-400 line-clamp-1">{product.description}</p>
         <p className="text-lg font-semibold">${product.price}</p>
         <div className="flex justify-center gap-2 mt-2">
             {product.images.map((image, index) => (
@@ -28,13 +28,13 @@ const ProductCard = ({ product, handleDelete, handleUpdate }: ProductCardProps) 
         </div>
         <div className="flex justify-center gap-2 mt-4">
             <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="bg-greenButton text-white px-4 py-2 rounded"
                 onClick={() => handleUpdate(product)}
             >
                 Actualizar
             </button>
             <button
-                className="bg-red-500 text-white px-4 py-2 rounded"
+                className="bg-redButton text-white px-4 py-2 rounded"
                 onClick={() => handleDelete(product.id)}
             >
                 Eliminar

@@ -16,6 +16,12 @@ export default {
         primary: {
           DEFAULT: "#8B4513",
         },
+        greenButton: {
+          DEFAULT: "#22c55e"
+        },
+        redButton: {
+          DEFAULT: "#ef4444"
+        }
       },
     },
   },

@@ -108,8 +108,8 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
                     </select>
                 </div>
                 <div className="flex justify-end gap-4">
-                    <button onClick={onClose} className="px-4 py-2 bg-gray-500 text-white rounded">Cancelar</button>
-                    <button onClick={handleSave} className="px-4 py-2 bg-blue-500 text-white rounded">Guardar</button>
+                    <button onClick={onClose} className="px-4 py-2 bg-redButton   text-white rounded">Cancelar</button>
+                    <button onClick={handleSave} className="px-4 py-2 bg-greenButton text-white rounded">Guardar</button>
                 </div>
             </div>
         </div>

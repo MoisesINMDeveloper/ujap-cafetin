@@ -19,8 +19,8 @@ const LoginAdministrador=() => {
     };
 
     const input = [
-        { type: "text", text: "Usuario administrador", value: username, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value) },
-        { type: "password", text: "Contraseña Administrador", value: password, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) },
+        { type: "text", name: "Usuario administrador", placeholder: "Usuario administrador", value: username, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value) },
+        { type: "password", name: "Contraseña Administrador", placeholder: "Contraseña Administrador", value: password, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) },
     ];
 
     return (
@@ -28,7 +28,7 @@ const LoginAdministrador=() => {
             <h1 className="text-white text-2xl font-bold">Ingresar al administrador</h1>
             <form className="flex flex-col gap-4 items-center justify-center" onSubmit={handleSubmit}>
                 {input.map((input, index) => (
-                    <InputLogin key={index} type={input.type} text={input.text} value={input.value} onChange={input.onChange} />
+                    <InputLogin key={index} type={input.type} name={input.name} placeholder={input.placeholder} value={input.value} onChange={input.onChange} />
                 ))}
                 <button type="submit" className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Enviar</button>
             </form>

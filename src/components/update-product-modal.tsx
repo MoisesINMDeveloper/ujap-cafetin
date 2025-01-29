@@ -88,7 +88,7 @@ const UpdateProductModal = ({ product, onClose, onSave }: UpdateProductModalProp
                         className="w-full p-2 border-2 border-primary rounded"
                     />
                     {images.length > 0 && (
-                        <div className="mt-2">
+                        <div className="mt-2 flex gap-4 flex-row">
                             {images.map((image, index) => (
                                 <img key={index} src={image} alt={`image-${index}`} className="w-16 h-16 object-cover rounded" />
                             ))}
@@ -96,8 +96,8 @@ const UpdateProductModal = ({ product, onClose, onSave }: UpdateProductModalProp
                     )}
                 </div>
                 <div className="flex justify-end gap-4">
-                    <button onClick={onClose} className="px-4 py-2 bg-gray-500 text-white rounded">Cancelar</button>
-                    <button onClick={handleSave} className="px-4 py-2 bg-blue-500 text-white rounded">Guardar</button>
+                    <button onClick={onClose} className="px-4 py-2 bg-redButton text-white rounded">Cancelar</button>
+                    <button onClick={handleSave} className="px-4 py-2 bg-greenButton text-white rounded">Guardar</button>
                 </div>
             </div>
         </div>

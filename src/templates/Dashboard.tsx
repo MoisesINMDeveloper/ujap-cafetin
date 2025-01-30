@@ -62,7 +62,7 @@ const Dashboard = () => {
         <InputFilter onSearch={handleSearch} />
         <FilterCategories onFilter={setFilteredCategories} />
       </div>
-      <div className='bg-black w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5'>
+      <div className='bg-black w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
         {displayedCategories.map(
           (category: { products: Product[]; id: number; name: string }) => (
             <Menu

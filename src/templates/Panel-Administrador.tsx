@@ -2,7 +2,7 @@ import { useState } from "react";
 import PanelAdminProducts from "../components/administration-products";
 import SideBar from "../components/molecules/sidebar";
 import PanelAdminCategories from "../components/administration-categories";
-// import { PanelAdminOrders } from "../components/administration-pedidos";
+import { PanelAdminOrders } from "../components/administration-pedidos";
 import { PanelAdminMobilePayment } from "../components/administration-pagomovil";
 import PanelAdminDelivery from "../components/administration-delivery";
 
@@ -13,8 +13,8 @@ const PanelAdmin=() => {
         switch(activeView){
             case "PRODUCTOS":
                 return <PanelAdminProducts/>
-            // case "PEDIDOS":
-            //     return <PanelAdminOrders/>
+            case "PEDIDOS":
+                return <PanelAdminOrders/>
             case "PAGOMOVIL":
                 return <PanelAdminMobilePayment/>
             case "DELIVERY":

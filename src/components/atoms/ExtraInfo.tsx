@@ -1,10 +1,10 @@
-import data, { ExtraInfo } from '../../constant/data'; // Ajusta la ruta según la ubicación real de tu archivo data.ts
+import  contactData, { type ContactItem }  from '../../constant/data';
 
 const ItemsMenu = () => {
   return (
     <div>
       <ul className='flex flex-row items-center justify-center gap-4'>
-        {data?.extraInfo.map((item: ExtraInfo, index: number) => (
+        {contactData?.extraInfo.map((item: ContactItem, index: number) => (
           <li className='flex flex-row items-center text-tertiary gap-2' key={index}>
             <a href={item.link} target='_blank' rel='noopener noreferrer'>
               {item.name}

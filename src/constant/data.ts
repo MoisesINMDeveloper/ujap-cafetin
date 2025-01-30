@@ -263,14 +263,14 @@ const data: {
   },
   extraInfo:[
     {
-      name: "Almuerzos",
-      link: "https://www.instagram.com/cafetinujap",
-      icon: MdOutlineDinnerDining,
+      name: "WhatsApp Cafetín",
+      link: "https://wa.me/4124676968",
+      icon: FaWhatsapp,
     },
     {
-      name:"Encargos",
-      link: "https://wa.me/4124676968",
-      icon: TbTruckDelivery,
+      name: "Cafetín UJAP",
+      link: "https://www.instagram.com/cafetinujap",
+      icon: FaInstagram,
     }
   ],
   contactData: [

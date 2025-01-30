@@ -28,7 +28,7 @@ const ImageProduct = ({ images, alt }: { images: string[]; alt: string }) => {
 
   return (
     <div>
-      <div className='w-60 h-52 box-shadow rounded-lg mb-4 overflow-hidden'>
+      <div className='w-[280px] h-[180px] box-shadow rounded-lg mb-4 overflow-hidden'>
         <Slider {...settings}>
           {images.map((src: string, index: number) => (
             <img

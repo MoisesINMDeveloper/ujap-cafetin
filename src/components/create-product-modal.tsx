@@ -87,7 +87,7 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
                         className="w-full p-2 border-2 border-primary rounded"
                     />
                     {images.length > 0 && (
-                        <div className="mt-2 flex">
+                        <div className="mt-2 flex gap-4">
                             {images.map((image, index) => (
                                 <img key={index} src={image} alt={`image-${index}`} className="w-16 h-16 object-cover rounded" />
                             ))}

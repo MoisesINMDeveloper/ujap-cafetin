@@ -111,7 +111,7 @@ const PanelAdminProducts = () => {
 
     return (
         <div className="text-white p-4 flex flex-col gap-6 items-center justify-center">
-            <h1 className="text-2xl mb-4">Administrador de Productos</h1>
+            <h1 className="text-2xl text-center">Administrador de Productos</h1>
             <CategoryFilter
                 categories={categories}
                 activeCategory={activeCategory}

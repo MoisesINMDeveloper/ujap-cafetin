@@ -16,7 +16,7 @@ interface ProductListProps {
 }
 
 const ProductList = ({ products, handleDelete, handleUpdate }: ProductListProps) => (
-    <div className="flex flex-wrap overflow-hidden gap-6 ml-24">
+    <div className="flex flex-wrap justify-center overflow-hidden gap-6">
         {products.map(product => (
             <ProductCard
                 key={product.id}

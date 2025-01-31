@@ -60,27 +60,30 @@ const PanelAdminDelivery = () => {
     };
 
     return (
-        <div className="p-4 bg-transparent border-primary border-2 rounded-sm mb-10">
-            <h1 className="text-white text-2xl mb-4 text-left">Administrador de delivery</h1>
+        <div className="mx-4 p-2 bg-transparent border-primary border-2 rounded-sm mb-10">
+            <h1 className="text-white text-2xl mb-4 text-center">Administrador de delivery</h1>
             <div className="mb-6 flex flex-col justify-center items-center">
-                <h2 className="text-white text-xl mb-6 text-left">
+                <h2 className="text-white text-xl mb-6 text-center">
                     {editZone ? "Editar zona de delivery" : "Agregar nueva zona de delivery"}
                 </h2>
-                <div className="flex flex-row gap-4 mb-4">
+                <div className="flex flex-col justify-center items-center mb-4">
+                    <div className='flex flex-wrap justify-center gap-4 mb-4'>
+
                     <InputLogin
                         type="text"
                         name="name"
                         placeholder="Nombre de la zona"
                         value={editZone ? editZone.name : newZone.name}
                         onChange={handleInputChange}
-                    />
+                        />
                     <InputLogin
                         type="text"
                         name="fee"
                         placeholder="Tarifa"
                         value={editZone ? editZone.fee : newZone.fee}
                         onChange={handleInputChange}
-                    />
+                        />
+                        </div>
                     <button
                         className={`${editZone ? "bg-greenButton" : "bg-primary"} text-white p-2 rounded w-24`}
                         onClick={editZone ? handleUpdateZone : handleAddZone}

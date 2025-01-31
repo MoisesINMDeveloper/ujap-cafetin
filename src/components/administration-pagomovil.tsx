@@ -82,13 +82,13 @@ export const PanelAdminMobilePayment = () => {
   ];
 
   return (
-    <div className="p-4 bg-transparent border-primary border-2 rounded-sm">
-      <h1 className="text-white text-2xl mb-4">Administrador de pagomovil</h1>
+    <div className=" mx-2 mb-4 p-4 bg-transparent border-primary border-2 rounded-sm">
+      <h1 className="text-white text-2xl text-center mb-4">Administrador de pagomovil</h1>
       <div className="mb-6 flex flex-col justify-center items-center">
-        <h2 className="text-white text-xl mb-6">
+        <h2 className="text-white text-center text-xl mb-6">
           {editPaymentOption ? "Editar opción de pago móvil" : "Agregar nueva opción de pago móvil"}
         </h2>
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {inputFields.map((field) => (
             <InputLogin
               key={field.name}

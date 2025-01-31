@@ -59,13 +59,13 @@ const PanelAdminCategories = () => {
     };
 
     return (
-        <div className="p-4 bg-transparent border-primary border-2 rounded-sm mb-10">
-            <h1 className="text-white text-2xl mb-4 text-left">Administrador de categorías</h1>
+        <div className="mx-2 p-2 bg-transparent border-primary border-2 rounded-sm mb-10">
+            <h1 className="text-white text-2xl mb-4 text-center">Administrador de categorías</h1>
             <div className="mb-6 flex flex-col justify-center items-center">
-                <h2 className="text-white text-xl mb-6 text-left">
+                <h2 className="text-white text-xl mb-6 text-center">
                     {editCategory ? "Editar categoría" : "Agregar nueva categoría"}
                 </h2>
-                <div className="flex flex-row gap-4 mb-4">
+                <div className="flex flex-col justify-center items-center gap-4 mb-4">
                     <InputLogin
                         type="text"
                         name="name"

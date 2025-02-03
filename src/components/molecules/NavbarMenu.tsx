@@ -13,7 +13,8 @@ interface MenuNavbarProps {
 const MenuNavbar = ({ onClick, setActiveView }: MenuNavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const location = useLocation(); // Obtener la ubicación actual
+  const location = useLocation();
+  const currentPath= location.hash.replace("#", "")
 
   const handleNavbarMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,10 +51,10 @@ const MenuNavbar = ({ onClick, setActiveView }: MenuNavbarProps) => {
         </button>
         {isMenuOpen && (
           <>
-            {location.pathname === '/administration-panel' && (
+            {currentPath === '/administration-panel' && (
               <SideBar setActiveView={setActiveView} />
             )}
-            {location.pathname === '/' && <ItemsMenu />}
+            {currentPath === '/' && <ItemsMenu />}
 
           </>
         )}

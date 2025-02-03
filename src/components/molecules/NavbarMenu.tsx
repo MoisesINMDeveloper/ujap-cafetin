@@ -50,10 +50,10 @@ const MenuNavbar = ({ onClick, setActiveView }: MenuNavbarProps) => {
         </button>
         {isMenuOpen && (
           <>
-            {location.pathname === '/cafetin-ujap/administration-panel' && (
+            {location.pathname === '/ujap-cafetin/#/administration-panel' && (
               <SideBar setActiveView={setActiveView} />
             )}
-            {location.pathname === '/cafetin-ujap/' && <ItemsMenu />}
+            {location.pathname === '/ujap-cafetin/' && <ItemsMenu />}
 
           </>
         )}

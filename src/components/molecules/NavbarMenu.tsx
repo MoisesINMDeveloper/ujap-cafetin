@@ -13,7 +13,7 @@ interface MenuNavbarProps {
 const MenuNavbar = ({ onClick, setActiveView }: MenuNavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const location = useLocation(); // Obtener la ubicación actual
+  const location = useLocation();
 
   const handleNavbarMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);

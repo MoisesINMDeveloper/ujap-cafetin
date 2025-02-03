@@ -7,5 +7,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  base: 'https://github.com/MoisesINMDeveloper/ujap-cafetin',
+  base: '/ujap-cafetin/', // Correcto para GitHub Pages
 });

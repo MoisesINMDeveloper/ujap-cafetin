@@ -12,7 +12,7 @@ const LoginAdministrador=() => {
             const data = await loginAdmin(username, password);
             console.log(data);
             sessionStorage.setItem("token", data.token);
-            window.location.href = "/cafetin-ujap/administration-panel";
+            window.location.href = "/administration-panel";
         } catch (error) {
             console.error(error);
         }

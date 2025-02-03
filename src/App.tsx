@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'; // 👈 Usa HashRouter
 import PanelAdmin from './templates/Panel-Administrador';
 import Dashboard from './templates/Dashboard';
 import Navbar from './components/organisms/Navbar';
@@ -11,12 +11,12 @@ export default function App() {
   const [activeView, setActiveView] = useState<string>('PRODUCTOS');
 
   return (
-    <Router basename="/ujap-cafetin"> {/* 👈 Agrega basename aquí */}
+    <Router> {/* 👈 HashRouter no necesita basename */}
       <div className="flex flex-col min-h-screen relative">
         <Navbar setActiveView={setActiveView} />
         <main className="relative flex-1">
           <Routes>
-            <Route path="/" element={<Dashboard />} /> {/* 👈 Cambia rutas */}
+            <Route path="/" element={<Dashboard />} /> {/* 👈 No es necesario poner /cafetin-ujap */}
             <Route path="/login-administration" element={<LoginAdministrador />} />
             <Route
               path="/administration-panel"

@@ -1,18 +1,20 @@
 import { InputLogin } from "../components/atoms/input";
 import { useState } from "react";
 import { loginAdmin } from "../constant/Api";
+import { useNavigate } from "react-router-dom";
 
 const LoginAdministrador=() => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
+    const navigate = useNavigate();
+    
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
             const data = await loginAdmin(username, password);
             console.log(data);
             sessionStorage.setItem("token", data.token);
-            window.location.href = "/#/administration-panel";
+            navigate("/cafetin-ujap/administration-panel")
         } catch (error) {
             console.error(error);
         }

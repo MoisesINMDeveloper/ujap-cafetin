@@ -7,5 +7,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  base: 'https://order-go.github.io/cafetin-ujap',
+  base: 'https://github.com/MoisesINMDeveloper/ujap-cafetin',
 });

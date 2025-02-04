@@ -32,7 +32,7 @@ const CreateProductModal = ({ categories, onClose, onSave }: CreateProductModalP
 
             Promise.all(imagePromises)
                 .then((base64Images) => {
-                    setImages(base64Images);  // Agregar imágenes en base64 al estado
+                    setImages(base64Images); 
                 })
                 .catch((error) => {
                     console.error("Error al cargar las imágenes", error);

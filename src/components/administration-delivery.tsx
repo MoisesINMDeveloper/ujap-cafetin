@@ -4,7 +4,7 @@ import { getDeliveryOptions, createDeliveryOption, updateDeliveryOption, deleteD
 
 const PanelAdminDelivery = () => {
     const [zones, setZones] = useState([{ id: 0, name: '', fee: 0 }]);
-    const [newZone, setNewZone] = useState({ name: '', fee: 0 });
+    const [newZone, setNewZone] = useState({ name: '', fee: '' });
     const [editZone, setEditZone] = useState<any>(null);
 
     useEffect(() => {
@@ -22,9 +22,9 @@ const PanelAdminDelivery = () => {
 
     const handleAddZone = async () => {
         try {
-            await createDeliveryOption(newZone);
+            await createDeliveryOption({ ...newZone, fee: parseFloat(newZone.fee) });
             fetchDeliveryZones();
-            setNewZone({ name: '', fee: 0 });
+            setNewZone({ name: '', fee: '' });
         } catch (error) {
             console.error("Error creating delivery zone:", error);
         }
@@ -32,7 +32,7 @@ const PanelAdminDelivery = () => {
 
     const handleUpdateZone = async () => {
         try {
-            await updateDeliveryOption(editZone.id, editZone.name, editZone.fee);
+            await updateDeliveryOption(editZone.id, editZone.name, parseFloat(editZone.fee));
             fetchDeliveryZones();
             setEditZone(null);
         } catch (error) {
@@ -51,11 +51,35 @@ const PanelAdminDelivery = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        const parsedValue = name === 'fee' ? (value === '' ? 0 : parseFloat(value)) : value;
-        if (editZone) {
-            setEditZone({ ...editZone, [name]: parsedValue });
+
+        // Permitir solo un punto decimal
+        if (name === 'fee') {
+            const sanitizedValue = value.replace(/[^0-9.]/g, ''); // Eliminar caracteres no numéricos ni punto.
+            const decimalCount = sanitizedValue.split('.').length - 1;
+            if (decimalCount > 1) return; // Solo permitir un punto decimal.
+            setNewZone((prevState) => ({
+                ...prevState,
+                [name]: sanitizedValue,
+            }));
+            if (editZone) {
+                setEditZone({
+                    ...editZone,
+                    [name]: sanitizedValue,
+                });
+            }
         } else {
-            setNewZone({ ...newZone, [name]: parsedValue });
+            // Para los otros campos, simplemente actualizamos el valor.
+            if (editZone) {
+                setEditZone({
+                    ...editZone,
+                    [name]: value,
+                });
+            } else {
+                setNewZone({
+                    ...newZone,
+                    [name]: value,
+                });
+            }
         }
     };
 
@@ -68,22 +92,21 @@ const PanelAdminDelivery = () => {
                 </h2>
                 <div className="flex flex-col justify-center items-center mb-4">
                     <div className='flex flex-wrap justify-center gap-4 mb-4'>
-
-                    <InputLogin
-                        type="text"
-                        name="name"
-                        placeholder="Nombre de la zona"
-                        value={editZone ? editZone.name : newZone.name}
-                        onChange={handleInputChange}
+                        <InputLogin
+                            type="text"
+                            name="name"
+                            placeholder="Nombre de la zona"
+                            value={editZone ? editZone.name : newZone.name}
+                            onChange={handleInputChange}
                         />
-                    <InputLogin
-                        type="text"
-                        name="fee"
-                        placeholder="Tarifa"
-                        value={editZone ? editZone.fee : newZone.fee}
-                        onChange={handleInputChange}
+                        <InputLogin
+                            type="text"
+                            name="fee"
+                            placeholder="Tarifa"
+                            value={editZone ? editZone.fee : newZone.fee}
+                            onChange={handleInputChange}
                         />
-                        </div>
+                    </div>
                     <button
                         className={`${editZone ? "bg-greenButton" : "bg-primary"} text-white p-2 rounded w-24`}
                         onClick={editZone ? handleUpdateZone : handleAddZone}
@@ -96,9 +119,9 @@ const PanelAdminDelivery = () => {
             <div className="flex flex-wrap items-center justify-center gap-6 mx-4">
                 {zones.map((zone) => (
                     <div key={zone.id}>
-                        <div className="bg-transparent  border-primary border-2 rounded-md p-4 mb-2 text-white flex flex-row gap-4">
+                        <div className="bg-transparent border-primary border-2 rounded-md p-4 mb-2 text-white flex flex-row gap-4">
                             <p>{zone.name}</p>
-                            <p>Tarifa: {zone.fee}</p>
+                            <p>Tarifa: {zone.fee.toFixed(2)}</p>
                         </div>
                         <div className="flex justify-center my-5 gap-4">
                             <button

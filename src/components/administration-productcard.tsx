@@ -15,7 +15,7 @@ const ProductCard = ({ product, handleDelete, handleUpdate }: ProductCardProps) 
     <div className="min-w-[280px] max-w-[350px] h-[250px] flex flex-col px-5 py-4 bg-transparent border-primary border-2 rounded-md">
         <h2 className="text-xl font-bold line-clamp-1">{product.title}</h2>
         <p className="text-gray-400 line-clamp-1">{product.description}</p>
-        <p className="text-lg font-semibold">${product.price}</p>
+        <p className="text-lg font-semibold">${product.price.toFixed(2)}</p>
         <div className="flex justify-center gap-2 mt-2">
             {product.images.map((image, index) => (
                 <img

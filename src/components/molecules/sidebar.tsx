@@ -12,7 +12,7 @@ interface SideBarProps {
     ];
   
     return (
-      <div className="fixed left-0 top-10 h-screen w-48 bg-black border-r-2 border-primary z-50 transition-transform duration-300">
+      <div className="fixed left-0 top-14 h-screen w-48 bg-black border-r-2 border-primary z-50 transition-transform duration-300">
         <ul className="text-lg w-full px-6 mt-12 flex flex-col items-start gap-6">
           {itemsBar.map(item => (
             <li key={item.id} className="w-full">

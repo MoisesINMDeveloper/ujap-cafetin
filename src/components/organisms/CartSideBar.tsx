@@ -86,7 +86,7 @@ const CartSidebar=({isOpen,onClose}: {isOpen: boolean; onClose: () => void;}) =>
 
     return (
         <>
-            <div ref={sidebarRef} className={`fixed z-40 top-10 right-0 h-auto w-80 border-2 border-t-0 rounded-lg rounded-t-none border-primary text-gray-300 bg-[#000000] shadow-lg transition-transform transform ${isOpen? 'translate-x-0':'translate-x-full'}`}>
+            <div ref={sidebarRef} className={`fixed z-40 top-14 right-0 h-auto w-80 border-2 border-t-0 rounded-lg rounded-t-none border-primary text-gray-300 bg-[#000000] shadow-lg transition-transform transform ${isOpen? 'translate-x-0':'translate-x-full'}`}>
                 <div className='flex flex-row justify-between items-center p-4 absolute right-0'>
                     <CloseCartIcon onClick={onClose} />
                 </div>

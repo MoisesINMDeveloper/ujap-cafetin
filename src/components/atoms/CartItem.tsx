@@ -15,7 +15,7 @@ const CartItem = ({
     <div className='flex justify-between items-center'>
       <div>
         <p className='font-semibold'>{item.product.title}</p>
-        <p>Bs. {item.product.price.toFixed(2)}</p>
+        <p>$ {item.product.price.toFixed(2)}</p>
       </div>
       <div className='flex flex-row items-center justify-center'>
         <div className='flex items-center'>
